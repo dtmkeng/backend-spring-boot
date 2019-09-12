@@ -2,7 +2,7 @@ package com.vote.entity;
 import lombok.*;
 
 import javax.persistence.Id;
-
+import javax.validation.constraints.NotNull;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.FetchType;
@@ -25,8 +25,12 @@ public class Competitor {
 	@SequenceGenerator(name="competitor_seq",sequenceName="competitor_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="competitor_seq")
 	@Column(name="competitor_ID",unique = true, nullable = true)
-	private @NonNull Long id;
-	private @NonNull String name;
-    private @NonNull String school;
+	private @NotNull Long id;
+	private @NotNull String name;
+    private @NotNull String school;
+
+	@OneToMany(fetch = FetchType.EAGER ,mappedBy="competitor")
+    // @JsonManagedReference
+    private Collection<VoteId> voteId;
 
 }
