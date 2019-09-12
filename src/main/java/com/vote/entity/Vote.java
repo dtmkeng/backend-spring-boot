@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.FetchType;
 
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,9 +32,9 @@ public class Vote {
     @JoinColumn(name = "voteTypeId", insertable = true)
 	private @NotNull VoteType voteType;
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = People.class)
-    @JoinColumn(name = "peopleId", insertable = true)
-	private @NotNull People people;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "people")
+	private People people;
 
     @OneToMany(fetch = FetchType.EAGER ,mappedBy="vote")
     // @JsonManagedReference
