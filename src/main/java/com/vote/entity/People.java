@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import com.fasterxml.jackson.annotation.*;
 @Data
 @Entity
 @NoArgsConstructor
@@ -29,6 +29,7 @@ public class People {
 	private @NotNull String name;
 
 	@OneToOne(mappedBy = "people")
-    // @JoinColumn(name = "voteId")
+	// @JoinColumn(name = "voteId")
+	@JsonIgnore
 	private Vote vote;
 }

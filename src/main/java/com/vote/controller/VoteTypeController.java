@@ -27,4 +27,8 @@ public class VoteTypeController {
     public Collection<VoteType> getVoteTypeAll() {
         return voteTypeRepository.findAll().stream().collect(Collectors.toList());
     }
+    @GetMapping("/votetype/{id}")
+    public VoteType getVoteTypeById(@PathVariable("id") Long id) {
+         return voteTypeRepository.findById(id).get();
+    }
 }

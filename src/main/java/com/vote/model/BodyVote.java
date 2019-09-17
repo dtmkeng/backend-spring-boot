@@ -1,8 +1,11 @@
 package com.vote.model;
 import lombok.*;
 
+
+// model for request body 
 @Data
 public  class BodyVote {
-    private String username;
-    private String password;
+    private Long prepleid;
+    private Long[] competitor;
+    private Long votetype;
 }

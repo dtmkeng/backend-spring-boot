@@ -27,4 +27,8 @@ public class CompertitorController {
     public Collection<Competitor> getCompetitorAll() {
         return competitorRepository.findAll().stream().collect(Collectors.toList());
     }
+    @GetMapping("/competitor/{id}")
+    public Competitor getCompetitorById(@PathVariable("id") Long id) {
+        return competitorRepository.findById(id).get();
+    }
 }

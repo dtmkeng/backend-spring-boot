@@ -27,4 +27,8 @@ public class PeopleController {
     public Collection<People> getPeopleAll() {
         return peopleRepository.findAll().stream().collect(Collectors.toList());
     }
+    @GetMapping("/people/{id}")
+    public People getPeopleById(@PathVariable("id") Long id) {
+         return peopleRepository.findById(id).get();
+    }
 }

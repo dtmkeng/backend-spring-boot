@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.FetchType;
-
+import com.fasterxml.jackson.annotation.*;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -30,14 +30,16 @@ public class Vote {
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = VoteType.class)
     @JoinColumn(name = "voteTypeId", insertable = true)
+    @JsonManagedReference
 	private @NotNull VoteType voteType;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "people")
+    @JsonManagedReference
 	private People people;
 
     @OneToMany(fetch = FetchType.EAGER ,mappedBy="vote")
-    // @JsonManagedReference
+    @JsonManagedReference
     private Collection<VoteId> voteId;
 
 }

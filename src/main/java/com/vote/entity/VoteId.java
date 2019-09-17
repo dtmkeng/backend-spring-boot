@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import com.fasterxml.jackson.annotation.*;
 @Data
 @Entity
 @NoArgsConstructor
@@ -28,14 +28,14 @@ public class VoteId {
 	private @NotNull Long id;
 	// private @NotNull String name;
 
-	@ManyToOne(fetch = FetchType.EAGER )
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name="voteId")
-    // @JsonIgnore
+    @JsonIgnore
     private Vote vote;
 
 
 	@ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name="competitorId")
-    // @JsonIgnore
+    @JsonIgnore
     private Competitor competitor;
 }
