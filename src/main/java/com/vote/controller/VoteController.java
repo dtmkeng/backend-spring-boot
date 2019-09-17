@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 public class VoteController {
 
@@ -44,7 +44,6 @@ public class VoteController {
         VoteType votetype = voteTypeRepository.findById(bodyVote.getVotetype()).get();
         vote.setVoteType(votetype);
         vote.setPeople(p);
-
         for(Long comID: bodyVote.getCompetitor()) {  // loop save Competitor 
             System.out.println("==========================================================");
             System.out.print("Competitor ID\t");
